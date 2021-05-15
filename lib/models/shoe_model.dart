@@ -9,11 +9,13 @@ class ShoeModel {
   final String imgPath;
   final String desc;
   final bool synch;
+  final int id;
 
-  ShoeModel({this.name,this.price,this.color,this.brand,this.imgPath,this.synch,this.desc});
+  ShoeModel({this.name,this.price,this.color,this.brand,this.imgPath,this.synch,this.desc,this.id});
 
-  static List<ShoeModel> list = [
+  static List<ShoeModel> shoemodel = [
      ShoeModel(
+       id:1,
       name: "Custom kyrie 7",
       price: 10000,
       color: AppColors.redColor,
@@ -24,6 +26,7 @@ class ShoeModel {
     ),
    
      ShoeModel(
+       id:2,
       name: "Mercurial Superfly 7",
       price: 8000,
       color: AppColors.yellowColor,
@@ -34,6 +37,7 @@ class ShoeModel {
     ),
     
     ShoeModel(
+      id:3,
       name: "kyrie 7",
       price: 12000,
       color: AppColors.greenColor,
@@ -43,6 +47,7 @@ class ShoeModel {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
     ),
      ShoeModel(
+       id:4,
       name: "Lebron 18 Neon",
       price: 12000,
       color: AppColors.blueColor,
@@ -52,6 +57,7 @@ class ShoeModel {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
     ),
     ShoeModel(
+      id:5,
       name: "Air Jordan XXXIV",
       price: 12000,
       color: AppColors.blackColor,
@@ -61,6 +67,7 @@ class ShoeModel {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
     ),
     ShoeModel(
+      id:6,
       name: "Air Zoom",
       price: 8000,
       color: AppColors.indigoColor,
@@ -71,6 +78,7 @@ class ShoeModel {
     ),
    
     ShoeModel(
+      id:7,
       name: "Mercurial Superfly 8",
       price: 12000,
       color: AppColors.purpleColor,
@@ -81,6 +89,7 @@ class ShoeModel {
     ),
     
     ShoeModel(
+      id:8,
       name: "Kyrie Flytrap 4 ",
       price: 11000,
       color: AppColors.purpleColor,
@@ -91,6 +100,7 @@ class ShoeModel {
     ),
     
     ShoeModel(
+      id:9,
       name: "Lebron Witness 5",
       price: 10000,
       color: AppColors.blueColor,
@@ -101,6 +111,7 @@ class ShoeModel {
     ),
    
     ShoeModel(
+      id:10,
       name: "Mercurial Superfly 8",
       price: 11000,
       color: AppColors.redColor,
@@ -110,6 +121,7 @@ class ShoeModel {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
     ),
     ShoeModel(
+      id:11,
       name: "Phantom GT Elite",
       price: 14000,
       color: AppColors.yellowColor,
@@ -119,6 +131,7 @@ class ShoeModel {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
     ),
     ShoeModel(
+      id:12,
       name: "Mercurial Vapor 14",
       price: 13000,
       color: AppColors.redColor,
@@ -128,6 +141,7 @@ class ShoeModel {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
     ),
     ShoeModel(
+      id:13,
       name: "Phantom GT",
       price: 8000,
       color: AppColors.blueColor,
@@ -137,6 +151,7 @@ class ShoeModel {
       desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
     ),
     ShoeModel(
+      id:14,
       name: "Zoom Freak 2",
       price: 12000,
       color: AppColors.orangeColor,

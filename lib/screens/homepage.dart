@@ -4,6 +4,9 @@ import 'package:shopify/models/constant.dart';
 import 'package:shopify/models/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopify/models/shoe_model.dart';
+import 'package:flutter_carousel_slider/carousel_slider.dart';
+import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
+import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
 import 'dart:math' as math;
 
 import 'package:shopify/screens/item_detail.dart';
@@ -15,12 +18,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List<ShoeModel> shoeList = ShoeModel.list;
+  List<ShoeModel> shoeList = ShoeModel.shoemodel;
    double xOffset = 0;
   double yOffset = 0;
 
   bool isDrawerOpen = false;
-
+  
   @override
   Widget build(BuildContext context) {
 
@@ -43,7 +46,7 @@ class _HomeState extends State<Home> {
             ),
 
             child: Container(
-              color: Color(0XFF2d3447),
+              color: Color(0XFFFFFFFF),
                child: SafeArea(
                  child: Container(
                    width: MediaQuery.of(context).size.width,
@@ -78,8 +81,9 @@ class _HomeState extends State<Home> {
                                 },
                                 icon:Icon(FlutterIcons.menu,),
                                 iconSize: 20,),
+                                IconButton(icon: Icon(FlutterIcons.search,color: Colors.black,),iconSize: 20, onPressed: null),
                                   
-                          Container(),
+                         // Container(),
                         ],
                       ),
                     ),
@@ -87,6 +91,7 @@ class _HomeState extends State<Home> {
                   Expanded(
                   child: ListView(
                            children: [
+                             
                              Padding(padding: EdgeInsets.symmetric(horizontal: 16),
                              child: Row(
                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -97,7 +102,7 @@ class _HomeState extends State<Home> {
                                  fontWeight: FontWeight.w700,
                                  fontSize: 35.sp,
                                  )),
-                                 IconButton(icon: Icon(FlutterIcons.search,color: Colors.black,), onPressed: null)
+                                 
                                ],
                              ),),
                              Container(
@@ -226,6 +231,9 @@ class _HomeState extends State<Home> {
     );
   }
 
+
+//Hidden Drawer
+
   Widget HiddenDrawer() {
     return Container(
     color: Colors.tealAccent[700],
@@ -328,6 +336,8 @@ class _HomeState extends State<Home> {
   );
   }
 
+
+
   Widget _customRow(String text,IconData icon){
     return Row(
       children: <Widget>[
@@ -345,6 +355,9 @@ class _HomeState extends State<Home> {
       ],
     );
   }
+
+
+//BackGround of LatestIn Shoes
 
   Widget _buildBackground(int index,double width) {
     return ClipPath(
@@ -407,3 +420,24 @@ class _HomeState extends State<Home> {
   }
 }
 
+//  Container(
+//             height: 500,
+//             child: CarouselSlider.builder(
+//                 key: _sliderKey,
+//                 unlimitedMode: true,
+//                 slideBuilder: (index) {
+//                   return Container(
+//                     alignment: Alignment.center,
+//                     color: colors[index],
+//                     child: Text(
+//                       letters[index],
+//                       style: TextStyle(fontSize: 200, color: Colors.white),
+//                     ),
+//                   );
+//                 },
+//                 slideTransform: CubeTransform(),
+//                 slideIndicator: CircularSlideIndicator(
+//                   padding: EdgeInsets.only(bottom: 32),
+//                 ),
+//                 itemCount: colors.length),
+//           ),

@@ -52,7 +52,7 @@ class _SignState extends State<Sign> {
             children: [
               Text("Welcome!",overflow: TextOverflow.ellipsis ,style: GoogleFonts.indieFlower(color: Colors.white,fontSize: 20.sp,fontWeight: FontWeight.w400,decoration: TextDecoration.none)),
               SizedBox(height: 15.h,),
-              Text("SHOPIFY",overflow: TextOverflow.ellipsis ,style: GoogleFonts.freckleFace(
+              Text("SHOEPIFY",overflow: TextOverflow.ellipsis ,style: GoogleFonts.freckleFace(
                 color: Colors.white,
                 fontSize: 60.sp,
                 fontWeight: FontWeight.w800,
