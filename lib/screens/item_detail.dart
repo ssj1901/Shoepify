@@ -4,9 +4,10 @@ import 'package:shopify/models/clipper_widget.dart';
 import 'package:shopify/models/constant.dart';
 import 'package:shopify/models/flutter_icons.dart';
 import 'package:shopify/models/shoe_model.dart';
-import 'package:shopify/screens/homepage.dart';
+//import 'package:shopify/screens/homepage.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:math' as math;
+import 'package:shopify/models/cart.dart';
 class ItemDetail extends StatefulWidget {
   final ShoeModel shoeModel;
   
@@ -16,7 +17,6 @@ class ItemDetail extends StatefulWidget {
 }
 
 class _ItemDetailState extends State<ItemDetail> {
-  
   @override
   
   Widget build(BuildContext context) {
@@ -96,10 +96,11 @@ class _ItemDetailState extends State<ItemDetail> {
             ),
                 ),
               ),
-              Positioned(
-                bottom: 0,
-                child: Container(
-      padding: EdgeInsets.symmetric(vertical: 16, horizontal: 32),
+         Positioned(
+         bottom: 0,
+         child: Container(
+           height: 130.h,
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 32),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -137,21 +138,44 @@ class _ItemDetailState extends State<ItemDetail> {
               ),
             ],
           ),
-          Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 16,
-              horizontal: 50,
+          GestureDetector(
+            onTap: (){
+              
+              setState(() {
+                    shoppingCart.add(Cart(shoe: widget.shoeModel,numItems: 1));
+                     totalSum();       
+                            });
+              final snackBar = SnackBar(
+            content: Text('Added to your Cart!'),
+            action: SnackBarAction(
+              label: 'Undo',
+              onPressed: () {
+                shoppingCart.removeLast();
+                totalSum();
+              },
             ),
-            decoration: BoxDecoration(
-              color: AppColors.greenColor,
-              borderRadius: BorderRadius.all(
-                Radius.circular(50),
+          );
+
+        
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                vertical: 16,
+                horizontal: 50,
               ),
-            ),
-            child: Text(
-              "ADD TO CART",
-              style: TextStyle(
-                color: Colors.white,
+              decoration: BoxDecoration(
+                color: AppColors.greenColor,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(50),
+                ),
+              ),
+              child: Text(
+                "ADD TO CART",
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
