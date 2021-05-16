@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:shopify/models/advertisment.dart';
 import 'package:shopify/models/clipper_widget.dart';
 import 'package:shopify/models/constant.dart';
 import 'package:shopify/models/flutter_icons.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopify/models/shoe_model.dart';
-import 'package:flutter_carousel_slider/carousel_slider.dart';
-import 'package:flutter_carousel_slider/carousel_slider_indicators.dart';
-import 'package:flutter_carousel_slider/carousel_slider_transforms.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'dart:math' as math;
 
 import 'package:shopify/screens/item_detail.dart';
@@ -27,6 +26,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
+    int _currentIndex = 0;  
     var h =MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -92,6 +92,77 @@ class _HomeState extends State<Home> {
                   child: ListView(
                            children: [
                              
+               CarouselSlider(
+              options: CarouselOptions(
+                autoPlay: true,
+                enlargeCenterPage: true,
+                scrollDirection: Axis.horizontal,
+                viewportFraction: 0.8,
+                onPageChanged: (index, reason) {
+                  setState(
+                    () {
+                      _currentIndex = index;
+                    },
+                  );
+                },
+              ),
+              items: ads
+                  .map(
+                    (item) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Card(
+                        color: Colors.black87,
+                        margin: EdgeInsets.only(
+                          top: 10.0,
+                          bottom: 10.0,
+                        ),
+                        elevation: 6.0,
+                        shadowColor: Color(0xffDADADA),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(30.0),
+                          ),
+                          child: Stack(
+                            children: [
+                              Center(
+                                child: Image(
+                                  image:AssetImage(
+                                  item.ad_url),
+                                  fit: BoxFit.contain,
+                                  width: double.infinity,
+                                ),
+                              ),
+                                    ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
+            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: ads.map((adurl) {
+            //     int index = ads.indexOf(adurl);
+            //     return Container(
+            //       width: 10.0,
+            //       height: 10.0,
+            //       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+            //       decoration: BoxDecoration(
+            //         shape: BoxShape.circle,
+            //         color: _currentIndex == index
+            //             ? Color.fromRGBO(0, 0, 0, 0.8)
+            //             : Color.fromRGBO(0, 0, 0, 0.3),
+            //       ),
+            //     );
+            //   }).toList(),
+            // ),
+            SizedBox(height: 15.h,),
+
+
                              Padding(padding: EdgeInsets.symmetric(horizontal: 16),
                              child: Row(
                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,11 +171,12 @@ class _HomeState extends State<Home> {
                                  style: TextStyle(
                                    color: Colors.black87,
                                  fontWeight: FontWeight.w700,
-                                 fontSize: 35.sp,
+                                 fontSize: 30.sp,
                                  )),
                                  
                                ],
                              ),),
+                             
                              Container(
                                margin: EdgeInsets.only(left: 10),
                                height: 300.h,

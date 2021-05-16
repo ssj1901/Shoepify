@@ -15,7 +15,7 @@ class Cart{
   // Cart(shoe: ShoeModel.shoemodel[2], numItems: 1),
 ];
 
-double total_sum ;
+double total_sum = 0;
 void totalSum(){
   total_sum = 0;
                   shoppingCart.forEach((element) {
