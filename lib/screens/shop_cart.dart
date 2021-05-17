@@ -192,14 +192,18 @@ class _ShopCartState extends State<ShopCart> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            IconButton(icon: Icon(Icons.add_circle_outline_rounded), onPressed: (){
+            IconButton(
+              splashColor: Colors.blue,
+              icon: Icon(Icons.add_circle_outline_rounded), onPressed: (){
              setState(() {
                            cart.numItems += 1; 
                            totalSum();
                           }); 
             }),
          //   SizedBox(height: 5.h,),
-            IconButton(icon: Icon(Icons.remove_circle_outline_outlined), onPressed: (){
+            IconButton(
+              splashColor: Colors.blue,
+              icon: Icon(Icons.remove_circle_outline_outlined), onPressed: (){
               setState(() {
                            cart.numItems -= 1; 
                            if(cart.numItems == 0){

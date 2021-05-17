@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Advertisement {
-  final ad_url;
+  final String ad_url;
   Advertisement({@required this.ad_url});
 }
 

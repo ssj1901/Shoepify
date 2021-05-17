@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shopify/models/clipper_widget.dart';
 import 'package:shopify/models/constant.dart';
 import 'package:shopify/models/flutter_icons.dart';
@@ -89,7 +90,26 @@ class _ItemDetailState extends State<ItemDetail> {
                                 _buildColorOptions(AppColors.yellowColor),
                                 _buildColorOptions(AppColors.greenColor),
                               ],
-                            )        
+                            ),
+                            SizedBox(
+                              height:15.h,
+                            ),
+                            Text("Size Options",
+                            style: TextStyle(
+                              fontSize: 20.sp,
+                              fontWeight:FontWeight.bold
+                            )),
+                            SizedBox(
+                              height:8.h,
+                            ),
+                            Row(
+                              children: [
+                                _buildSizeOptions("S"),
+                                _buildSizeOptions("M"),
+                                _buildSizeOptions("L"),
+                              ],
+                            )
+
                                      ],
                     ),
                   ),
@@ -99,7 +119,7 @@ class _ItemDetailState extends State<ItemDetail> {
          Positioned(
          bottom: 0,
          child: Container(
-           height: 130.h,
+           height: 80.h,
       padding: EdgeInsets.symmetric(vertical: 10, horizontal: 32),
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
@@ -138,7 +158,8 @@ class _ItemDetailState extends State<ItemDetail> {
               ),
             ],
           ),
-          GestureDetector(
+          InkWell(
+            splashColor: Colors.blue,
             onTap: (){
               
               setState(() {
@@ -238,6 +259,21 @@ Widget _buildColorOptions(Color color){
                                     color: color,
                                     borderRadius: BorderRadius.all(Radius.circular(50),)
                                   ),
+                                );
+}
+
+Widget _buildSizeOptions(String size){
+  return Container(
+                                  width: 30.h,
+                                  height: 30.h,
+                                  margin: EdgeInsets.only(right: 10),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: AppColors.greenColor,
+                                      width: 3
+                                    ),
+                                  ),
+                                  child: Center(child: Text("$size",style: GoogleFonts.roboto(color: Colors.black,fontWeight: FontWeight.bold),)),
                                 );
 }
 

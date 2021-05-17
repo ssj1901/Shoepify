@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:shopify/models/advertisment.dart';
 import 'package:shopify/models/clipper_widget.dart';
 import 'package:shopify/models/constant.dart';
@@ -9,6 +10,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'dart:math' as math;
 
 import 'package:shopify/screens/item_detail.dart';
+import 'package:shopify/screens/swiper.dart';
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
 
@@ -143,23 +145,7 @@ class _HomeState extends State<Home> {
                   )
                   .toList(),
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: ads.map((adurl) {
-            //     int index = ads.indexOf(adurl);
-            //     return Container(
-            //       width: 10.0,
-            //       height: 10.0,
-            //       margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-            //       decoration: BoxDecoration(
-            //         shape: BoxShape.circle,
-            //         color: _currentIndex == index
-            //             ? Color.fromRGBO(0, 0, 0, 0.8)
-            //             : Color.fromRGBO(0, 0, 0, 0.3),
-            //       ),
-            //     );
-            //   }).toList(),
-            // ),
+            
             SizedBox(height: 15.h,),
 
 
@@ -185,7 +171,7 @@ class _HomeState extends State<Home> {
                                  scrollDirection: Axis.horizontal,
                                  physics: BouncingScrollPhysics(),
                                  itemBuilder: (context,index){
-                                 return GestureDetector(
+                                 return InkWell(
                                    onTap: (){
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetail(shoeList[index])));
                                    },
@@ -225,6 +211,52 @@ class _HomeState extends State<Home> {
                                  );
                                }),
                              ),
+                             SizedBox(height: 20.h,),
+                             Container(
+                               padding: EdgeInsets.symmetric(horizontal: 10),
+                               child: Text("Top Brands",
+                               style: TextStyle(color: Colors.black87,fontWeight: FontWeight.bold,fontSize: 20.sp),),
+                             ),
+                            
+                            SizedBox(height: 10,),
+                            //  Container(
+                            //    height: 100.h,
+                            //    child: ListView.builder(
+                            //      itemCount: 6,
+                            //        scrollDirection: Axis.horizontal,
+                            //        physics: BouncingScrollPhysics(),
+                            //      itemBuilder: (context,index){
+                            //        return InkWell(
+                            //          child:  Container(
+                            //            margin: EdgeInsets.symmetric(horizontal: 10),
+                            //           padding: EdgeInsets.all(15),
+                            //           height: 25.h,
+                            //           width: 70.w,
+                                      
+                            //           decoration: BoxDecoration(
+                            //             color: Colors.black,
+                            //             boxShadow: [BoxShadow(color:Colors.grey,
+                            //             blurRadius: 1.0,),],
+                            //             borderRadius: BorderRadius.circular(20),
+                            //           ),
+                            //           child: Column(
+                            //             crossAxisAlignment: CrossAxisAlignment.center,
+                            //             children: [
+                            //               Icon(FlutterIcons.nike,color: Colors.white,size: 30,),
+                            //               //SizedBox(height:10),
+                            //               Text("Nike",style: TextStyle(color:Colors.white,fontSize: 12,fontWeight: FontWeight.w900),textAlign: TextAlign.center,)
+                            //             ]
+                            //           ),
+                                  
+                            //     ),
+                            //                                 );
+                            //      },
+                            //    ),
+                            //  ),
+
+                            Custom_Swiper(),
+
+                              SizedBox(height: 20.h,),
                              Padding(padding: EdgeInsets.symmetric(horizontal: 16,vertical: 15),
                              child: Row(
                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -240,7 +272,7 @@ class _HomeState extends State<Home> {
                                height: 25.h,
                              ),
                              ...shoeList.map((data) {
-                               return GestureDetector(
+                               return InkWell(
                                    onTap: (){
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => ItemDetail(data)));
                                    },
@@ -492,24 +524,3 @@ class _HomeState extends State<Home> {
   }
 }
 
-//  Container(
-//             height: 500,
-//             child: CarouselSlider.builder(
-//                 key: _sliderKey,
-//                 unlimitedMode: true,
-//                 slideBuilder: (index) {
-//                   return Container(
-//                     alignment: Alignment.center,
-//                     color: colors[index],
-//                     child: Text(
-//                       letters[index],
-//                       style: TextStyle(fontSize: 200, color: Colors.white),
-//                     ),
-//                   );
-//                 },
-//                 slideTransform: CubeTransform(),
-//                 slideIndicator: CircularSlideIndicator(
-//                   padding: EdgeInsets.only(bottom: 32),
-//                 ),
-//                 itemCount: colors.length),
-//           ),

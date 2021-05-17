@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,6 +16,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool _isHidden = true;
   Artboard _artboard;
   @override
       void initState() {
@@ -73,9 +75,39 @@ class _LoginState extends State<Login> {
                     SizedBox(height: 30.h),
                     Text("Login",style: GoogleFonts.firaSans(color: Colors.indigoAccent[700],fontSize: 45.sp,decoration: TextDecoration.none,fontWeight: FontWeight.w500)),
                     SizedBox(height: 60.h,),
-                    _customField("Enter Email Id",Icons.mail_outline),
+                    Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: TextField(
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                        hintText: "Enter Email Id",
+                        prefixIcon: Icon(Icons.mail_outline_rounded,color: Colors.indigoAccent[700],),
+                        border: InputBorder.none,
+                         ),
+                    ),
+                  ),
+                   
                     SizedBox(height: 20.h,),
-                    _customField("Enter Password", Icons.lock),
+                    Material(
+                    elevation: 5.0,
+                    borderRadius: BorderRadius.circular(30.0),
+                    child: TextField(
+                      obscureText: _isHidden,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
+                        hintText: "Enter Password",
+                        prefixIcon: Icon(Icons.lock,color: Colors.indigoAccent[700],),
+                        suffixIcon: InkWell(
+                          onTap: _toggleView,
+                          child: Icon(Icons.visibility,color: Colors.indigoAccent[700],)),
+                        border: InputBorder.none,
+                         ),
+                    ),
+                  ),
+                    
                     SizedBox(height: 30.h,),
                     _custombutton("Login",Color(0XFF304FFE) , Color(0XFFFFFFFF)),
                     SizedBox(height: 20.h,),
@@ -105,6 +137,11 @@ class _LoginState extends State<Login> {
         ],
       ),
     );
+  }
+  void _toggleView(){
+    setState(() {
+          _isHidden=!_isHidden;
+        });
   }
 
   Widget _customIconbutton(Buttons b){
@@ -155,22 +192,5 @@ class _LoginState extends State<Login> {
         ),
     ),
 );
-  }
-
-
-  Widget _customField(String text,IconData i) {
-    return Material(
-                    elevation: 5.0,
-                    borderRadius: BorderRadius.circular(30.0),
-                    child: TextField(
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical: 20),
-                        hintText: text,
-                        prefixIcon: Icon(i,color: Colors.indigoAccent[700],),
-                        border: InputBorder.none,
-                         ),
-                    ),
-                  );
   }
 }
